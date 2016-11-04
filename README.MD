@@ -1,9 +1,11 @@
-## OOA Design
+##The Solution
+Using The First-fit decreasing algorithm https://en.wikipedia.org/wiki/Bin_packing_problem
+
+## Design
 Based on Object-Oriented Analysis, OOA, this system should include the following main object.
 
 The relationship of entity as below
-
-`Conference -- 1 * n --> Period -- 1 * n --> Track -- 1 * n --> Event `
+> `Conference -- 1 * n --> Session -- 1 * n --> Track -- 1 * n --> Event `
 
 
 ### Conference 
