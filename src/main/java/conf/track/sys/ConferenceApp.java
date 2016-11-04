@@ -6,11 +6,12 @@ package conf.track.sys;
 public class ConferenceApp {
 
     public static void main(String args[]) {
-//        1. read input files
+//        1. read input files, parse files
 
 //        2. run conference schedule()
 
 //        3. print the result
+//        ConferencePrinter printer = new ConferencePrinter();
 
     }
 }
