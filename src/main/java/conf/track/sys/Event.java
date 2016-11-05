@@ -26,26 +26,13 @@ public class Event {
     public String getDescription(){
         return description;
     }
-}
 
-enum DurationUnit {
-    MINUTES(1,"min"),
-    LIGHTENING(5, "lightning");
-
-    private int base;
-    private String name;
-
-    DurationUnit(int base, String name){
-        this.base= base;
-        this.name = name;
+    public int getDuration(){
+        return duration;
     }
 
-    public int toMintues(int duration){
-        return duration * base;
-    }
-
-    @Override
-    public String toString() {
-        return name;
+    public DurationUnit getDurationUnit(){
+        return durationUnit;
     }
 }
+

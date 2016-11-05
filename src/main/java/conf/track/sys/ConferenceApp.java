@@ -32,7 +32,12 @@ public class ConferenceApp {
 
     public static Conference schedule() {
 //        1. parse events from input files
-        List<Event> events = EventParser.parse("filePath");
+        List<Event> events = null;
+        try {
+            events = EventParser.parse("filePath");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
 
 //        2. process events
