@@ -21,24 +21,27 @@ public class ConferenceApp {
 
     public static void main(String args[]) {
 //        1. read input files, parse files
-
+        String inputFilePath = args[0];
+        if (inputFilePath == null || inputFilePath.isEmpty()) {
+            System.exit(1);
+//            throw new IllegalArgumentException("Please enter the file path.");
+        }
 //        2. run conference schedule()
-          Conference conference = schedule();
+        Conference conference = schedule(inputFilePath);
 //        3. print the result
-//        ConferencePrinter printer = new ConferencePrinter();
-          System.out.print( conference.getContent() );
+        System.out.print(conference.getContent());
     }
 
 
-    public static Conference schedule() {
+    public static Conference schedule(String inputFilePath) {
 //        1. parse events from input files
         List<Event> events = null;
         try {
-            events = EventParser.parse("filePath");
+            events = EventParser.parse(inputFilePath);
         } catch (Exception e) {
             e.printStackTrace();
         }
-
+        if (events==null || events.isEmpty()) { return null; }
 
 //        2. process events
 //        > 2.1 combine Events to Period
@@ -46,10 +49,10 @@ public class ConferenceApp {
 //        > 2.3 combine Tracks to Conference
 //
 //         config conference periods
-        List<Period> periods = initPeriods( events );
+        List<Period> periods = initPeriods(events);
 
         List<Track> tracks = new ArrayList<>();
-        tracks.add( new Track( periods ) );
+        tracks.add(new Track(periods));
 
         Conference conference = new Conference(tracks);
 
@@ -59,7 +62,7 @@ public class ConferenceApp {
     public static List<Period> initPeriods(List<Event> events) {
         //         config conference schedule period
         List<Period> periods = new ArrayList<>();
-        if (!events.isEmpty()) {
+        if ( events!=null && !events.isEmpty()) {
             Period morningPeriod = new Period(MORNING_SESSION_START_TIME, MORNING_SESSION_DURATION);
             periods.add(morningPeriod);
 

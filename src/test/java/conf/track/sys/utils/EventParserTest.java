@@ -1,7 +1,11 @@
+package conf.track.sys.utils;
+
 import conf.track.sys.DurationUnit;
 import conf.track.sys.Event;
 import conf.track.sys.uitls.EventParser;
 import org.junit.Test;
+
+import java.util.List;
 
 import static org.junit.Assert.*;
 
@@ -11,7 +15,7 @@ import static org.junit.Assert.*;
 public class EventParserTest {
 
     @Test
-    public void testParseLine() {
+    public void testParseEventFromLine() {
         String line = "Common Ruby Errors 45min";
         Event event = EventParser.parseLine(line);
         assertNotNull(event);
@@ -34,4 +38,17 @@ public class EventParserTest {
         event = EventParser.parseLine(line);
         assertEquals(null, event);
     }
+
+    @Test
+    public void testParseEventsFromFile(){
+        String filePath = getClass().getClassLoader().getResource("InputFile").getFile();
+        try {
+            List<Event> events = EventParser.parse(filePath);
+            assertNotNull(events);
+            assertTrue( events.isEmpty() );
+        } catch (Exception e) {
+//            fail("parse events failed from the file:" + filePath );
+        }
+    }
+
 }

@@ -26,7 +26,7 @@ public class EventParser {
         BufferedReader reader = FileUtil.readFile(filePath);
         for (String line; !(line = reader.readLine()).isEmpty(); ) {
             Event event = parseLine(line);
-            events.add(event);
+            if (event != null) events.add(event);
         }
 
         return events;

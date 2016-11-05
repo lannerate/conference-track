@@ -11,7 +11,7 @@ import java.io.FileReader;
 public class FileUtil {
 
     public static BufferedReader readFile(String filePath) throws FileNotFoundException{
-        if( filePath.isEmpty() ) throw new FileNotFoundException("the file path is empty, can not find the file");
+        if( filePath == null || filePath.isEmpty() ) throw new FileNotFoundException("file path is empty, can not find the file");
 
         File file = new File(filePath);
         return new BufferedReader( new FileReader(file ));

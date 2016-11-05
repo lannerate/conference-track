@@ -1,3 +1,5 @@
+package conf.track.sys;
+
 import conf.track.sys.Conference;
 import org.junit.Test;
 
