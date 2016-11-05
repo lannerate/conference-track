@@ -1,3 +1,6 @@
+[![Build Status](https://travis-ci.org/lannerate/conference-track.svg?branch=master)](https://travis-ci.org/lannerate/conference-track)
+
+
 ##The Solution
 Using The First-fit decreasing algorithm https://en.wikipedia.org/wiki/Bin_packing_problem
 
