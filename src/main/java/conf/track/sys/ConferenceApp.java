@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by apple on 11/4/16.
+ * Created by hzhang3 on 11/4/16.
  */
 public class ConferenceApp {
 

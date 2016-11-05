@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Objects;
 
 /**
- * Created by apple on 11/3/16.
+ * Created by hzhang3 on 11/3/16.
  */
 public class Conference {
 

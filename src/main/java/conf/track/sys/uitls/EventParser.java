@@ -24,7 +24,7 @@ public class EventParser {
         List<Event> events = new ArrayList<>();
 
         BufferedReader reader = FileUtil.readFile(filePath);
-        for (String line; !(line = reader.readLine()).isEmpty(); ) {
+        for (String line; (line = reader.readLine()) != null; ) {
             Event event = parseLine(line);
             if (event != null) events.add(event);
         }
@@ -49,7 +49,7 @@ public class EventParser {
         }
 
         String durationUnitStr = matcher.group(INDEX_EVENET_DURATION_UNIT);
-        if (durationUnitStr.isEmpty()) {
+        if (durationUnitStr == null || durationUnitStr.isEmpty()) {
             return null;
         }
 

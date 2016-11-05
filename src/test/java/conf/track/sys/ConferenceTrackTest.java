@@ -10,5 +10,9 @@ public class ConferenceTrackTest {
     @Test
     public void testConferenceSchedule() {
 //        Conference.schedule();
+        String filePath = getClass().getClassLoader().getResource("InputFile").getFile();
+
+        String content = ConferenceApp.schedule(filePath).getContent();
+        System.out.println(content);
     }
 }

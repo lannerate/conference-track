@@ -45,7 +45,7 @@ public class EventParserTest {
         try {
             List<Event> events = EventParser.parse(filePath);
             assertNotNull(events);
-            assertTrue( events.isEmpty() );
+            assertTrue( !events.isEmpty() );
         } catch (Exception e) {
 //            fail("parse events failed from the file:" + filePath );
         }

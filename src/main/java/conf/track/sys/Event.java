@@ -1,7 +1,7 @@
 package conf.track.sys;
 
 /**
- * Created by apple on 11/3/16.
+ * Created by hzhang3 on 11/3/16.
  */
 public class Event {
     private String description;
