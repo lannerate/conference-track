@@ -9,10 +9,9 @@ import org.junit.Test;
 public class ConferenceTrackTest {
     @Test
     public void testConferenceSchedule() {
-//        Conference.schedule();
         String filePath = getClass().getClassLoader().getResource("InputFile").getFile();
 
-        String content = ConferenceApp.schedule(filePath).getContent();
-        System.out.println(content);
+        Conference conference = ConferenceApp.schedule(filePath);
+        System.out.println( conference );
     }
 }

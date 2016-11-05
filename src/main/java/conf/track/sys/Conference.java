@@ -17,21 +17,27 @@ public class Conference {
     public Conference() {
         tracks = new ArrayList<>();
     }
+
     public Conference(List<Track> tracks) {
         this.tracks = tracks;
     }
 
-    public String getContent(){
+    public void addTrack(Track track){
+        tracks.add(track);
+    }
+
+    @Override
+    public String toString(){
         StringBuilder builder = new StringBuilder();
 
         if( !tracks.isEmpty() ){
-            for (Track track: tracks){
-                builder.append(track.toString());
-                for (Period period: track.periods){
-                    for (Event event: period.getEvents()){
-                        builder.append( event.toString() );
-                    }
-                }
+            builder.append("Conference Schedule:" + "\n" + "\n");
+
+            for (int i =0; i< tracks.size(); i++){
+                Track track = tracks.get(i);
+                builder.append("Track " + (i+1) +":" +"\n");
+                builder.append(track);
+                builder.append("\n");
             }
         }
         return builder.toString();

@@ -6,6 +6,16 @@ package conf.track.sys.uitls;
 public class TimeFormater {
     static final int maxSupportMinutes = 24 * 60 - 1; // only one day
 
+    /**
+     * formatted sample as below
+     *
+     * 11:15AM Ruby Errors from Mismatched Gem Versions 45min
+     * 12:00PM Lunch
+     * 01:00PM Ruby on Rails: Why We Should Move On 60min
+     *
+     * @param minutes
+     * @return
+     */
     public static String format(int minutes) {
         if (minutes > maxSupportMinutes)
             throw new IllegalArgumentException("greater than max support minutes:" + maxSupportMinutes + "min");

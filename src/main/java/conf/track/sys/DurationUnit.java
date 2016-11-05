@@ -12,7 +12,7 @@ public enum DurationUnit {
         this.name = name;
     }
 
-    public int toMintues(int duration){
+    public int toMinutes(int duration){
         return duration * base;
     }
 

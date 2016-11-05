@@ -15,12 +15,12 @@ public class Event {
     }
 
     public int getDurationMinutes(){
-        return durationUnit.toMintues( duration );
+        return durationUnit.toMinutes( duration );
     }
 
     @Override
     public String toString() {
-        return description + "-" + duration + " " + durationUnit;
+        return description + " " + "-" + " " + duration + " " + durationUnit;
     }
 
     public String getDescription(){

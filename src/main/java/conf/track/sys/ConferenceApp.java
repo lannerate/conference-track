@@ -2,7 +2,7 @@ package conf.track.sys;
 
 import conf.track.sys.uitls.EventParser;
 
-import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -13,11 +13,12 @@ public class ConferenceApp {
     public static final int MORNING_SESSION_DURATION = 180; //minutes
     public static final int LUNCH_DURATION = 60; //minutes
     public static final int AFTERNOON_SESSION_DURATION = 240; //minutes
+    public static final int NETWORK_EVENT_DURATION = 60; //minutes
 
     public static final int MORNING_SESSION_START_TIME = 9 * 60;
     public static final int LUNCH_START_TIME = MORNING_SESSION_START_TIME + MORNING_SESSION_DURATION;
     public static final int AFTERNOON_SESSION_START_TIME = LUNCH_START_TIME + LUNCH_DURATION;
-
+    public static final int NETWORK_EVENT_START_TIME = (12 * 60) + (5 * 60); // 5 PM
 
     public static void main(String args[]) {
 //        1. read input files, parse files
@@ -29,7 +30,7 @@ public class ConferenceApp {
 //        2. run conference schedule()
         Conference conference = schedule(inputFilePath);
 //        3. print the result
-        System.out.print(conference.getContent());
+//        System.out.print(conference.getContent());
     }
 
 
@@ -41,7 +42,9 @@ public class ConferenceApp {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        if (events==null || events.isEmpty()) { return null; }
+        if (events == null || events.isEmpty()) {
+            return null;
+        }
 
 //        2. process events
 //        > 2.1 combine Events to Period
@@ -49,29 +52,49 @@ public class ConferenceApp {
 //        > 2.3 combine Tracks to Conference
 //
 //         config conference periods
-        List<Period> periods = initPeriods(events);
 
-        List<Track> tracks = new ArrayList<>();
-        tracks.add(new Track(periods));
+        Conference conference = new Conference();
 
-        Conference conference = new Conference(tracks);
+        processEvents(events,conference);
 
         return conference;
     }
 
-    public static List<Period> initPeriods(List<Event> events) {
+    public static void processEvents(List<Event> events, Conference conference) {
         //         config conference schedule period
-        List<Period> periods = new ArrayList<>();
-        if ( events!=null && !events.isEmpty()) {
+        while (events != null && !events.isEmpty()) {
+
             Period morningPeriod = new Period(MORNING_SESSION_START_TIME, MORNING_SESSION_DURATION);
-            periods.add(morningPeriod);
+            populateEvents(morningPeriod, events);
 
             Period lunchPeriod = new Period(LUNCH_START_TIME, LUNCH_DURATION);
-            periods.add(lunchPeriod);
+            lunchPeriod.addEvents(new Event("Lunch", LUNCH_DURATION, DurationUnit.MINUTES));
 
             Period afternoonPeriod = new Period(AFTERNOON_SESSION_START_TIME, AFTERNOON_SESSION_DURATION);
-            periods.add(afternoonPeriod);
+            populateEvents(afternoonPeriod, events);
+
+            Period netWorkingPeriod = new Period(NETWORK_EVENT_START_TIME,NETWORK_EVENT_DURATION);
+            netWorkingPeriod.addEvents(new Event("Networking Event",NETWORK_EVENT_DURATION, DurationUnit.MINUTES));
+            afternoonPeriod.addOtherPeroid(netWorkingPeriod);
+
+            Track track = new Track();
+            track.addPeriod(morningPeriod);
+            track.addPeriod(lunchPeriod);
+            track.addPeriod(afternoonPeriod);
+
+            conference.addTrack(track);
         }
-        return periods;
     }
+
+    private static void populateEvents(Period morningPeriod, List<Event> events) {
+        for (Iterator<Event> it = events.iterator(); it.hasNext(); ) {
+            Event event = it.next();
+            if (morningPeriod.hasEnoughSpaceTime(event)) {
+                morningPeriod.addEvents(event);
+                it.remove();
+            }
+        }
+    }
+
+
 }

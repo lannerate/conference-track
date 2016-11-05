@@ -17,8 +17,13 @@ public class Track {
         this.periods = periods;
     }
 
+    public void addPeriod(Period period) {
+        periods.add(period);
+    }
+
     @Override
     public String toString() {
+
         StringBuilder builder = new StringBuilder();
 
         periods.forEach(e -> builder.append(e));
