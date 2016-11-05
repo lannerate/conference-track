@@ -29,6 +29,12 @@ public class Period {
         }
     }
 
+    public boolean hasEnoughSpaceTime(Event event){
+        return totalRemainingTime <= event.getDurationMinutes();
+    }
 
+    public List<Event> getEvents(){
+        return events;
+    }
 
 }

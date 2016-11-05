@@ -10,4 +10,6 @@ public class Track {
     public List<Period> periods;
 
     public Track(){ periods = new ArrayList<>(); }
+
+    public Track(List<Period> periods) { this.periods = periods; }
 }
