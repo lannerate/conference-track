@@ -33,12 +33,17 @@ public class EventParser {
     public static Event parseLine(String line) {
 
         if (line == null || line.isEmpty()) return null;
-        /**
+
+        /** the sample
          *  Common Ruby Errors 45min
          *  Rails for Python Developers lightning
          *  Communicating Over Distance 60min
          */
-        //using regex expression to parse event's fields.
+
+//       Using the regex expression to parse event's fields.
+//      ^(.+)\               : event description
+//      (\d+)?               : event duration
+//      ((min)|(lightning))$ : event duration unit
 
         Matcher matcher = Pattern.compile("^(.+)\\s(\\d+)?\\s?((min)|(lightning))$").matcher(line);
 

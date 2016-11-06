@@ -2,13 +2,14 @@
 
 
 ##The Solution
-Refer to the First-fit decreasing algorithm https://en.wikipedia.org/wiki/Bin_packing_problem
+Refer to the First-fit algorithm https://en.wikipedia.org/wiki/Bin_packing_problem
 
 ## Design
 Based on Object-Oriented Analysis, OOA, which includes the following entities.
 
 The relationship of entities as below
 > `Conference -- 1 * n --> Track -- 1 * n --> Period -- 1 * n --> Event `
+
 #### Conference 
 The conference can contains multiple tracks.
 #### Track
@@ -19,10 +20,10 @@ Each Period can contains multiple events(talk or networking).
 Each event means every talk session or networking, which has event description, and event duration.
 
 ### The processing of schedule conference.
-The main method is in `ConferenceApp`.
+The main method is in `ConferenceApp`, the basic processes as below.
 > 1. Read input files, and parse files to events.
-> 2. Run the conference schedule `ConferenceApp.schedule()` to get the scheduled conference.
-> > * Configure the events for Morning/Lunch/Afternoon/Networking period.
+> 2. Run the method `ConferenceApp.schedule()` to get the scheduled conference.
+> > * Configure Morning/Lunch/Afternoon/Networking Period.
 > > * Populate Events to Period, consuming event when the current period has enough space time.
 > > * Populate Tracks to Conference.
 > 3. Print the context of conference.

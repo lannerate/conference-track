@@ -25,7 +25,6 @@ public class ConferenceApp {
         String inputFilePath = args[0];
         if (inputFilePath == null || inputFilePath.isEmpty()) {
             System.exit(1);
-//            throw new IllegalArgumentException("Please enter the file path.");
         }
 //        2. run conference schedule()
         Conference conference = schedule(inputFilePath);
@@ -45,14 +44,11 @@ public class ConferenceApp {
         if (events == null || events.isEmpty()) {
             return null;
         }
-
 //        2. process events
-//        > 1. configure the events for Morning/Lunch/Afternoon/networking period.
-//        > 2. populate Events to Period, consume events when the current period has enough space time.
-//        > 3. populate Tracks to Conference
-
+//        > configure for Morning/Lunch/Afternoon/networking period.
+//        > populate Events to Period, consume events when the current period has enough space time.
+//        > populate Tracks to Conference
         Conference conference = new Conference();
-
         processEvents(events, conference);
 
         return conference;
@@ -61,7 +57,7 @@ public class ConferenceApp {
     public static void processEvents(List<Event> events, Conference conference) {
 
         while (events != null && !events.isEmpty()) {
-
+            //config periods
             Period morningPeriod = new Period(MORNING_SESSION_START_TIME, MORNING_SESSION_DURATION);
             populateEvents(morningPeriod, events);
 
