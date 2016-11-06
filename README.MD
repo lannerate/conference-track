@@ -9,24 +9,30 @@ Based on Object-Oriented Analysis, OOA, which includes the following entities.
 
 The relationship of entities as below
 > `Conference -- 1 * n --> Track -- 1 * n --> Period -- 1 * n --> Event `
-
-### Conference 
-The conference can contains multiple tracks each one may inclu 
-
-### Track
+#### Conference 
+The conference can contains multiple tracks.
+#### Track
 Each track can contains multiple event periods, that may include morning session period, lunch period, or afternoon session period, or networking period.
-
-### Period
+#### Period
 Each Period can contains multiple events(talk or networking). 
-
-### Event
+#### Event
 Each event means every talk session or networking, which has event description, and event duration.
 
-## The processing of schedule conference.
-The main method is in the `ConferenceApp`
-> 1. Read input files, and parse files to events
+### The processing of schedule conference.
+The main method is in `ConferenceApp`.
+> 1. Read input files, and parse files to events.
 > 2. Run the conference schedule `ConferenceApp.schedule()` to get the scheduled conference.
-> 3. Print the context of conference
+> > * Configure the events for Morning/Lunch/Afternoon/Networking period.
+> > * Populate Events to Period, consuming event when the current period has enough space time.
+> > * Populate Tracks to Conference.
+> 3. Print the context of conference.
+
+##How to Run it
+
+> 1. Switch the root project directory, execute the following cmd to build it.
+> `> gradle build`
+> 2. After build it successfully,in the folder `$rootproject/build/libs`, you will find the build jar `conference-track-1.0.jar`
+> and then run the command to get result `> java -jar conference-track-1.0.jar ../../src/test/resources/InputFile `
 
 ### The rules
 
