@@ -22,10 +22,12 @@ Each event means every talk session or networking, which has event description, 
 ### The processing of schedule conference.
 The main method is in `ConferenceApp`, the basic processes as below.
 > 1. Read input files, and parse files to events.
+
 > 2. Run the method `ConferenceApp.schedule()` to get the scheduled conference.
-> > * Configure Morning/Lunch/Afternoon/Networking Period.
-> > * Populate Events to Period, consuming event when the current period has enough space time.
-> > * Populate Tracks to Conference.
+> * Configure Morning/Lunch/Afternoon/Networking Period.
+> * Populate Events to Period, consuming event when the current period has enough space time.
+> * Populate Tracks to Conference.
+
 > 3. Print the context of conference.
 
 ##How to Run it
