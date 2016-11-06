@@ -1,4 +1,4 @@
-package conf.track.sys.uitls;
+package conf.track.sys.util;
 
 /**
  * Created by apple on 11/5/16.

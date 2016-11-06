@@ -1,6 +1,5 @@
-package conf.track.sys.utils;
+package conf.track.sys.util;
 
-import conf.track.sys.uitls.FileUtil;
 import org.junit.Test;
 
 import java.io.FileNotFoundException;

@@ -1,11 +1,7 @@
 package conf.track.sys;
 
-import conf.track.sys.uitls.EventParser;
-
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-import java.util.Objects;
 
 /**
  * Created by hzhang3 on 11/3/16.

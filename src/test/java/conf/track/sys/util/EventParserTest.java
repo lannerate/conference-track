@@ -1,8 +1,7 @@
-package conf.track.sys.utils;
+package conf.track.sys.util;
 
 import conf.track.sys.DurationUnit;
 import conf.track.sys.Event;
-import conf.track.sys.uitls.EventParser;
 import org.junit.Test;
 
 import java.util.List;

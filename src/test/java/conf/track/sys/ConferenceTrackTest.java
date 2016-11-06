@@ -1,7 +1,6 @@
 package conf.track.sys;
 
-import conf.track.sys.Conference;
-import conf.track.sys.uitls.FileUtil;
+import conf.track.sys.util.FileUtil;
 import org.junit.Test;
 
 import java.io.BufferedReader;
