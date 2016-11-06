@@ -16,7 +16,7 @@ public class Period {
     private Period otherPeriod;
 
     public Period(int startTime, int sessionDuration) {
-        //firstly init period, that is morning session duration or afternoon session duration
+        //firstly init period, for morning session period, lunch period, afternoon session period, and networking period.
         this.totalRemainingTime = sessionDuration;
         this.startTime = startTime;
         events = new ArrayList<>();
@@ -41,7 +41,7 @@ public class Period {
         return events;
     }
 
-    public void addOtherPeroid(Period otherPeriod){
+    public void addOtherPeriod(Period otherPeriod){
         this.otherPeriod = otherPeriod;
     }
     @Override

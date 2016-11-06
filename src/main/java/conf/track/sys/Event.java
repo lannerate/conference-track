@@ -20,7 +20,7 @@ public class Event {
 
     @Override
     public String toString() {
-        return description + " " + "-" + " " + duration + " " + durationUnit;
+        return description + " " + duration +  durationUnit;
     }
 
     public String getDescription(){

@@ -30,9 +30,7 @@ public class Conference {
     public String toString(){
         StringBuilder builder = new StringBuilder();
 
-        if( !tracks.isEmpty() ){
-            builder.append("Conference Schedule:" + "\n" + "\n");
-
+        if( tracks!=null && !tracks.isEmpty() ){
             for (int i =0; i< tracks.size(); i++){
                 Track track = tracks.get(i);
                 builder.append("Track " + (i+1) +":" +"\n");

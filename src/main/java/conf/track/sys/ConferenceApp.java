@@ -29,8 +29,8 @@ public class ConferenceApp {
         }
 //        2. run conference schedule()
         Conference conference = schedule(inputFilePath);
-//        3. print the result
-//        System.out.print(conference.getContent());
+//        3. print the context of conference
+        System.out.print(conference);
     }
 
 
@@ -47,21 +47,19 @@ public class ConferenceApp {
         }
 
 //        2. process events
-//        > 2.1 combine Events to Period
-//        > 2.2 combine Periods to Track
-//        > 2.3 combine Tracks to Conference
-//
-//         config conference periods
+//        > 1. configure the events for Morning/Lunch/Afternoon/networking period.
+//        > 2. populate Events to Period, consume events when the current period has enough space time.
+//        > 3. populate Tracks to Conference
 
         Conference conference = new Conference();
 
-        processEvents(events,conference);
+        processEvents(events, conference);
 
         return conference;
     }
 
     public static void processEvents(List<Event> events, Conference conference) {
-        //         config conference schedule period
+
         while (events != null && !events.isEmpty()) {
 
             Period morningPeriod = new Period(MORNING_SESSION_START_TIME, MORNING_SESSION_DURATION);
@@ -73,9 +71,10 @@ public class ConferenceApp {
             Period afternoonPeriod = new Period(AFTERNOON_SESSION_START_TIME, AFTERNOON_SESSION_DURATION);
             populateEvents(afternoonPeriod, events);
 
-            Period netWorkingPeriod = new Period(NETWORK_EVENT_START_TIME,NETWORK_EVENT_DURATION);
-            netWorkingPeriod.addEvents(new Event("Networking Event",NETWORK_EVENT_DURATION, DurationUnit.MINUTES));
-            afternoonPeriod.addOtherPeroid(netWorkingPeriod);
+            //adding networking period to afternoon period, specially handle the networking event.
+            Period netWorkingPeriod = new Period(NETWORK_EVENT_START_TIME, NETWORK_EVENT_DURATION);
+            netWorkingPeriod.addEvents(new Event("Networking Event", NETWORK_EVENT_DURATION, DurationUnit.MINUTES));
+            afternoonPeriod.addOtherPeriod(netWorkingPeriod);
 
             Track track = new Track();
             track.addPeriod(morningPeriod);
