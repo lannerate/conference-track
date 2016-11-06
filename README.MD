@@ -39,7 +39,7 @@ The main method is in `ConferenceApp`, the basic processes as below.
 > For example
 >`> java -jar conference-track-1.0.jar ../../src/test/resources/InputFile`
 
-### The rules
+### The rule for Problem 1
 
 - The conference has multiple tracks each of which has a morning and afternoon session.
 Each session contains multiple talks.
