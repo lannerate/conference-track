@@ -32,8 +32,12 @@ The main method is in `ConferenceApp`, the basic processes as below.
 
 > 1. Switch the root project directory, execute the following cmd to build it.
 > `> gradle build`
+
 > 2. After build it successfully,in the folder `$rootproject/build/libs`, you will find the build jar `conference-track-1.0.jar`
-> and then run the command to get result `> java -jar conference-track-1.0.jar ../../src/test/resources/InputFile `
+> and then run the command to get conference result 
+>`> java -jar conference-track-1.0.jar  your_input_file`
+> For example
+>`> java -jar conference-track-1.0.jar ../../src/test/resources/InputFile`
 
 ### The rules
 
