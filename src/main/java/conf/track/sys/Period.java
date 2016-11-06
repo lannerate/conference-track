@@ -48,6 +48,7 @@ public class Period {
         StringBuilder collectedResult = new StringBuilder();
         int nextStartTime = addEventSchedule(events, startTime, collectedResult);
 
+        //if have networking period for this problem, need to re-calculate next start time.
         if(otherPeriod !=null ){
             int otherStartTime = otherPeriod.startTime;
             if(nextStartTime > otherStartTime){
@@ -61,9 +62,10 @@ public class Period {
     private int addEventSchedule(List<Event> events, int startTime, StringBuilder collectedResult) {
         int nextStartTime = startTime;
         for (Event event : events) {
+            //format the output for each event.
             String outputForEvent = TimeFormater.format(nextStartTime) + " " + event + "\n";
             collectedResult.append(outputForEvent);
-
+            //add the current event duration to next start time
             nextStartTime += event.getDurationMinutes();
         }
 
