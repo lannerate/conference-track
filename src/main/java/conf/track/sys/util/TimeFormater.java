@@ -4,6 +4,9 @@ package conf.track.sys.util;
  * Created by apple on 11/5/16.
  */
 public class TimeFormater {
+
+    private static Logger logger = Logger.getLogger();
+
     static final int maxSupportMinutes = 24 * 60 - 1; // only one day
 
     /**
@@ -17,8 +20,11 @@ public class TimeFormater {
      * @return
      */
     public static String format(int minutes) {
-        if (minutes > maxSupportMinutes)
-            throw new IllegalArgumentException("greater than max support minutes:" + maxSupportMinutes + "min");
+        if (minutes > maxSupportMinutes){
+            String errorMsg = "greater than max support minutes:" + maxSupportMinutes + "min";
+            logger.error(errorMsg);
+            throw new IllegalArgumentException(errorMsg);
+        }
 
         int hoursDisplay = minutes / 60;
         int minutesDisplay = minutes % 60;

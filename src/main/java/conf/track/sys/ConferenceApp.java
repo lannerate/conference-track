@@ -5,6 +5,8 @@ import conf.track.sys.util.EventParser;
 import java.util.Iterator;
 import java.util.List;
 
+import conf.track.sys.util.Logger;
+
 /**
  * Created by hzhang3 on 11/4/16.
  */
@@ -19,6 +21,8 @@ public class ConferenceApp {
     public static final int LUNCH_START_TIME = MORNING_SESSION_START_TIME + MORNING_SESSION_DURATION;
     public static final int AFTERNOON_SESSION_START_TIME = LUNCH_START_TIME + LUNCH_DURATION;
     public static final int NETWORK_EVENT_START_TIME = (12 * 60) + (5 * 60); // 5 PM
+
+    private static Logger logger = Logger.getLogger();
 
     public static void main(String args[]) {
 //        1. read input files, parse files
@@ -39,7 +43,7 @@ public class ConferenceApp {
         try {
             events = EventParser.parse(inputFilePath);
         } catch (Exception e) {
-            e.printStackTrace();
+            logger.error( e.getMessage() );
         }
         if (events == null || events.isEmpty()) {
             return null;
@@ -49,6 +53,7 @@ public class ConferenceApp {
 //        > populate Events to Period, consume events when the current period has enough space time.
 //        > populate Tracks to Conference
         Conference conference = new Conference();
+
         processEvents(events, conference);
 
         return conference;

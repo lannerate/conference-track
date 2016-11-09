@@ -16,6 +16,8 @@ import static org.junit.Assert.*;
  * Created by hzhang3 on 11/3/16.
  */
 public class ConferenceTrackTest {
+    public static final String NEW_LINE = System.lineSeparator();
+
     @Test
     public void testConferenceSchedule() throws Exception {
         List<String> linesActual = getActualLinesAfterScheduled("InputFile");
@@ -37,7 +39,7 @@ public class ConferenceTrackTest {
 
     private List<String> getActualLinesAfterScheduled(String inputFile) {
         Conference conference = ConferenceApp.schedule(findResourceFile(inputFile));
-        return Arrays.asList(conference.toString().split("\n"));
+        return Arrays.asList(conference.toString().split(NEW_LINE));
     }
 
     private List<String> getExceptedLines(String exceptedFile) throws FileNotFoundException, IOException {
