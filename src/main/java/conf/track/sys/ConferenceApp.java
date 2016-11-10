@@ -1,5 +1,6 @@
 package conf.track.sys;
 
+import conf.track.sys.util.Configure;
 import conf.track.sys.util.EventParser;
 
 import java.util.Iterator;
@@ -13,14 +14,6 @@ import conf.track.sys.util.Logger;
 public class ConferenceApp {
 
     public static final int MORNING_SESSION_DURATION = 180; //minutes
-    public static final int LUNCH_DURATION = 60; //minutes
-    public static final int AFTERNOON_SESSION_DURATION = 240; //minutes
-    public static final int NETWORK_EVENT_DURATION = 60; //minutes
-
-    public static final int MORNING_SESSION_START_TIME = 9 * 60;
-    public static final int LUNCH_START_TIME = MORNING_SESSION_START_TIME + MORNING_SESSION_DURATION;
-    public static final int AFTERNOON_SESSION_START_TIME = LUNCH_START_TIME + LUNCH_DURATION;
-    public static final int NETWORK_EVENT_START_TIME = (12 * 60) + (5 * 60); // 5 PM
 
     private static Logger logger = Logger.getLogger();
 
@@ -63,18 +56,18 @@ public class ConferenceApp {
 
         while (events != null && !events.isEmpty()) {
             //config periods
-            Period morningPeriod = new Period(MORNING_SESSION_START_TIME, MORNING_SESSION_DURATION);
+            Period morningPeriod = new Period(Configure.MORNING_SESSION_START_TIME, MORNING_SESSION_DURATION);
             populateEvents(morningPeriod, events);
 
-            Period lunchPeriod = new Period(LUNCH_START_TIME, LUNCH_DURATION);
-            lunchPeriod.addEvents(new Event("Lunch", LUNCH_DURATION, DurationUnit.MINUTES));
+            Period lunchPeriod = new Period(Configure.LUNCH_START_TIME, Configure.LUNCH_DURATION);
+            lunchPeriod.addEvents(new Event("Lunch", Configure.LUNCH_DURATION, DurationUnit.MINUTES));
 
-            Period afternoonPeriod = new Period(AFTERNOON_SESSION_START_TIME, AFTERNOON_SESSION_DURATION);
+            Period afternoonPeriod = new Period(Configure.AFTERNOON_SESSION_START_TIME, Configure.AFTERNOON_SESSION_DURATION);
             populateEvents(afternoonPeriod, events);
 
             //adding networking period to afternoon period, specially handle the networking event.
-            Period netWorkingPeriod = new Period(NETWORK_EVENT_START_TIME, NETWORK_EVENT_DURATION);
-            netWorkingPeriod.addEvents(new Event("Networking Event", NETWORK_EVENT_DURATION, DurationUnit.MINUTES));
+            Period netWorkingPeriod = new Period(Configure.NETWORK_EVENT_START_TIME, Configure.NETWORK_EVENT_DURATION);
+            netWorkingPeriod.addEvents(new Event("Networking Event", Configure.NETWORK_EVENT_DURATION, DurationUnit.MINUTES));
             afternoonPeriod.addOtherPeriod(netWorkingPeriod);
 
             Track track = new Track();
